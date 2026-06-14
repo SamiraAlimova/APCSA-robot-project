@@ -1,132 +1,159 @@
 import processing.core.PApplet;
 
 public class Sketch extends PApplet {
-  // ============================================
-  // CUSTOMIZE ME #1: Tree settings
-  // Change these numbers and see what happens!
-  // ============================================
 
-  // How tall is the trunk?
-  int startingLength = 120;  
-  // When do branches stop splitting? 
-  int minLength = 4;       
-  // How much smaller is each new branch? (try 0.5 to 0.8)   
-  float shrinkFactor = (float)0.67;  
-  // How wide do branches spread? (in degrees)
-  int branchAngle = 25;     
+    int targetX = 105;
+    int targetY = 240;
 
-  public void settings() {
-    size(600, 600);
-  }
-
-  public void setup() {
-    background(0);
-  }
-
-  public void draw() {
-    for (int i = 0; i <  height; i++) {
-      stroke(300, 200, 150 +(i/4)); //fades from peach to ligth blue
-      line (0, i , width, i); //sunset
+    public void settings() {
+        size(600, 600);
+       // angleMode(DEGREES);
     }
 
-    // fill(222, 164, 245, 180);
-    // noStroke();
-    // ellipse(random(width), random(height), 5, 5);
-    
-    
-    // Start drawing from the bottom-center of the screen
+    public void setup() {
+        
+      frameRate(10);
+        
+    } //end of settign process
 
-     // Draw the tree 1!
-    pushMatrix();
-    translate(width/2, height);
-    startingLength = 180;
-    drawBranch(startingLength);
-    popMatrix();
+    public void draw() {
+    background(109, 131, 181);
+    //draw my Robot 
     
-    // Draw the tree 2!
-    pushMatrix();
-    translate(width/4, height);
-    startingLength = 100;
-    drawBranch(startingLength);
-    popMatrix();
+    //ears
+    fill(random(255), random(255), random(255));
+    circle(targetX + 135, targetY - 97, 20);
+    circle(targetX + 255, targetY - 97, 20);
 
-    // Draw the tree 3!
-    pushMatrix();
-    translate(width/6, height);
-    startingLength = 0;
-    drawBranch(startingLength);
-    popMatrix();
-  }
+    //head
+    fill(215, 216, 217);
+    ellipse(targetX + 195, targetY - 90, 120, 90);
 
-  //mini cute house :)
-    //house
-    public void house() {
-    fill(250);
-    noStroke();
-    rect(0,0, 300, 600);
+    //eyes rect
+    fill(255, 255, 255);
+    rect(targetX + 157, targetY - 110, 20, 24);
+    rect(targetX + 217, targetY - 110, 20, 28);
 
-    }
-    
+    //eyes cirlce
+    fill(150, 89, 14);
+    ellipse(targetX + 166, targetY - 93, 10, 10);
+    ellipse(targetX + 223, targetY -  92, 10, 10);
 
-  /**
-  * The recursive method that draws a tree.
-  * A branch draws itself, then asks two smaller branches to draw themselves.
-  */
-  public void drawBranch(float length) {
     
-    // ============================================
-    // CUSTOMIZE ME #2: How does each branch look?
-    // Try changing the color or thickness!
-    // ============================================
-    stroke(80, 50, 20);              // brown
-    strokeWeight(map(length, minLength, startingLength, 1, 8));       // thicker branches at the base
-    
-    // Draw this branch going "up" (negative y in Processing)
-    line(0, 0, 0, -length);
-    
-    // Move the pen to the tip of the branch we just drew
-    translate(0, -length);
-    
-    // BASE CASE: stop when the branches get too small
-    if (length < minLength) {
-      
-      // ============================================
-      // CUSTOMIZE ME #3: What's at the tip of a branch?
-      // This is where you can draw leaves, flowers, fruit...
-      // ============================================
-      fill(113, 133, 98);
-      noStroke();
-      float leafSize =  random(5, 12);
-      ellipse(0, 0, leafSize, leafSize);
+    //mouse
+    fill(255, 255, 255);
+    rect(targetX + 184, targetY - 71, 20, 10 );
+
+    //teeth
+    fill(5, 5, 5);
+    line(targetX + 191, targetY - 71, targetX + 191, targetY - 62);
+    line(targetX + 198, targetY - 71, targetX + 198, targetY - 62);
+
+    //signal head
+    fill(255, 255, 255);
+    rect(targetX + 191, targetY - 133 , 6, - 50);
+
+    fill(139, 179, 158);
+    circle(targetX + 194, targetY - 187, 15);
   
-      return;  // stop recursing
+     // moon like arc
+    fill(random(255), random(255),random(255));
+    arc(targetX + 370, targetY - 3, 120, 120, radians(270), radians(450));
+
+    fill(242, 217, 107);
+    arc(targetX + 365, targetY - 3, 100, 100, radians(270), radians(450), CHORD);
+
+    //neck
+    fill(237, 229, 81);
+    circle(targetX + 194, targetY - 36, 17 );
+
+    fill(149, 195, 230);
+    circle(targetX + 194, targetY - 19, 17 );
+
+    fill(185, 250, 222);
+    circle(targetX + 194, targetY - 1, 17 );
+    
+    //shoulders
+    fill(174, 122, 214);
+    circle(targetX + 142, targetY - 2, 26);
+    circle(targetX + 242, targetY - 2, 26);
+
+    //dress quad
+    fill(201, 165, 179);
+    quad(targetX + 154, targetY - 3, targetX + 230, targetY - 3, targetX + 283, targetY + 150 , targetX + 115, targetY + 150);
+
+    //rect
+    fill(252, 212, 226);
+    rect(targetX + 172, targetY + 40, 40, 35);
+
+    //midlle rect
+    fill(random(255), random(255), random(255));
+    rect(targetX + 183, targetY + 50, 20, 17);
+
+    //elements for dress
+    fill(158, 200, 219);
+    circle(targetX + 121, targetY + 158, 30);
+
+    fill(242, 218, 160);
+    circle(targetX + 151, targetY + 158, 30);
+
+    fill(211, 247, 181);
+    circle(targetX + 181, targetY + 158, 30);
+
+    fill(143, 114, 186);
+    circle(targetX + 211, targetY + 158, 30);
+
+    fill(194, 125, 91);
+    circle(targetX + 241, targetY + 158, 30);
+
+    fill(242, 169, 85);
+    circle(targetX + 271, targetY + 158, 30);
+
+    // leg
+    fill(215, 216, 217);
+    ellipse(targetX + 196, targetY + 171, 15, 8);
+    ellipse(targetX + 196, targetY + 180, 15, 8);
+    ellipse(targetX + 196, targetY + 190, 15, 8);
+    ellipse(targetX + 196, targetY + 200, 15, 8);
+    ellipse(targetX + 196, targetY + 210, 15, 8);
+    ellipse(targetX + 196, targetY + 220, 15, 8);
+    ellipse(targetX + 196, targetY + 230, 15, 8);
+    ellipse(targetX + 196, targetY + 240, 15, 8);
+    ellipse(targetX + 196, targetY + 250, 15, 8);
+
+    // leg foot
+     fill(237, 212, 161);
+    rect(targetX + 134, targetY + 250, 115, 30, 28);
+
+    //leg mini foots
+    fill(random(255), random(255), random(255));
+    ellipse(targetX + 176, targetY + 285, 13, 27);
+    ellipse(targetX + 205, targetY + 285, 13, 27);
+
+    //rect arms
+    fill(213, 229, 235);
+    rect(targetX + 253, targetY - 5, 120, 15);
+    rect(targetX + 9, targetY - 5, 120, 15);
+
+    //arms feet
+    fill(227, 255, 249);
+    ellipse(targetX + 375, targetY, 15, 25);
+    ellipse(targetX, targetY, 15, 25);
+    
+    //text
+    fill(random(255), random(255), random(255));
+    textSize(80);
+    text("Hello" , 110, 80);
+    text("World !" , 310, 80);
+
+    System.out.println(mouseX + " " + mouseY);
+
+        
+    }//end of tthe drawing process
+
+    public void mousePressed() {
+        targetX += 10;
+        targetY -= 10;
     }
-    
-    // RECURSIVE CASE: draw a smaller tree on the right...
-    float variety = random(-15, 15);
 
-    pushMatrix();
-    rotate(radians(branchAngle + variety));
-    drawBranch(length * shrinkFactor);
-    popMatrix();
-    
-    // ...and a smaller tree on the left.
-    pushMatrix();
-    rotate(radians(-branchAngle + variety));
-    drawBranch(length * shrinkFactor);
-    popMatrix();
-    
-    leaves();
-
-  } 
-    //fruits
-    public void leaves() {
-        fill(112, 25, 34);
-        //fruit code goes here!
-        noStroke();
-        ellipse(0, 0, 4, 4);
-
-    }
-
-  
 }
